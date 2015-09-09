@@ -13,10 +13,17 @@ import java.util.Scanner;
  * @author Philip
  */
 public class Controller {
+    /**
+     * Skriver ut ett introduktionsmeddelande.
+     */
     private void printIntroMsg() {
         System.out.println("helloooo");
     }
     
+    /**
+     * Den här funktionen sammankopplar model- och view-paketen för att fungera
+     * som en kalkylator.
+     */
     public void run() {
         printIntroMsg();
 

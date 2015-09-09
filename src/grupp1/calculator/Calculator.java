@@ -13,6 +13,8 @@ import grupp1.calculator.controller.Controller;
  */
 public class Calculator {
     /**
+     * Det här är den bästa funktionen i hela programmet.
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
