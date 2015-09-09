@@ -5,6 +5,7 @@
  */
 package grupp1.calculator.controller;
 
+import grupp1.calculator.exceptions.InvalidTokenException;
 import java.util.Scanner;
 
 /**
@@ -25,9 +26,11 @@ public class Controller {
             try {
                 String s = scanner.next();
                 System.out.println("nu skrev du " + s);
+                throw new InvalidTokenException();
+                //tokenizer.createTokenFromString(s);
             }
-            catch (Exception e) {
-                System.out.println("nu gick det fel");
+            catch (InvalidTokenException e) {
+                System.out.println("InvalidTokenException: " + e.toString());
             }
         }
     }
