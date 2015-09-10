@@ -24,7 +24,7 @@ public class Controller {
             try {
                 String s = scanner.next();
                 System.out.println("nu skrev du " + s);
-                throw new InvalidTokenException();
+                throw new InvalidTokenException(null);
                 //tokenizer.createTokenFromString(s);
             }
             catch (InvalidTokenException e) {
