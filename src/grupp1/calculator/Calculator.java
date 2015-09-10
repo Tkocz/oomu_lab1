@@ -16,7 +16,7 @@ public class Calculator {
      * Skriver ut ett introduktionsmeddelande.
      */
     private static void printIntroMsg() {
-        System.out.println("nu körde du igång en polsk kalkylator som aldrig räknar rätt. dom där polackerna alltså...");
+        System.out.println("nu körde du igång en polsk kalkylator som aldrig räknar rätt. dom där grekerna alltså...");
     }
     
     /**
