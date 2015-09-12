@@ -2,10 +2,10 @@ package grupp1.calculator.exceptions;
 
 /**
  * Represents the exception that is thrown when an attempt is made to solve an
- * expression that contains an invalid token.
+ * expression that contains an invalid operation.
  * @author Philip Arvidsson (S133686)
  */
-public class InvalidTokenException extends CalculatorException {
+public class InvalidOperationException extends CalculatorException {
     /**
      * @private
      * The token that generated the exception.
@@ -16,7 +16,7 @@ public class InvalidTokenException extends CalculatorException {
      * Konstruktor.
      * @param token The token that generated the exception.
      */
-    public InvalidTokenException(Object token) {
+    public InvalidOperationException(Object token) {
         this.token = token;
     }
     

@@ -1,21 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grupp1.calculator.controller;
 
+import grupp1.calculator.exceptions.DivisionByZeroException;
+import grupp1.calculator.exceptions.InvalidOperationException;
 import grupp1.calculator.exceptions.InvalidTokenException;
+
 import java.util.Scanner;
 
 /**
- *
- * @author Philip
+ * This class ties together the model and view packages to create a functioning
+ * program.
+ * @author Philip Arvidsson (S133686)
  */
 public class Controller {
     /**
-     * Den här funktionen sammankopplar model- och view-paketen för att fungera
-     * som en kalkylator.
+     * Calculator main method.
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -24,11 +22,23 @@ public class Controller {
             try {
                 String s = scanner.next();
                 System.out.println("nu skrev du " + s);
-                throw new InvalidTokenException(null);
+                
+                if (false) throw new DivisionByZeroException(null);
+                if (false) throw new InvalidOperationException(null);
+                if (false)throw new InvalidTokenException(null);
                 //tokenizer.createTokenFromString(s);
+            }
+            catch (DivisionByZeroException e) {
+                System.out.println("DivsionByZeroException: " + e.toString());
+            }
+            catch (InvalidOperationException e) {
+                System.out.println("InvalidOperationException: " + e.toString());
             }
             catch (InvalidTokenException e) {
                 System.out.println("InvalidTokenException: " + e.toString());
+            }
+            catch (Exception e) {
+                System.out.println("Exception: " + e.toString());
             }
         }
     }

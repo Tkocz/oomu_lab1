@@ -2,10 +2,10 @@ package grupp1.calculator.exceptions;
 
 /**
  * Represents the exception that is thrown when an attempt is made to solve an
- * expression that contains an invalid token.
+ * expression that contains a division-by-zero error.
  * @author Philip Arvidsson (S133686)
  */
-public class InvalidTokenException extends CalculatorException {
+public class DivisionByZeroException extends Exception {
     /**
      * @private
      * The token that generated the exception.
@@ -16,7 +16,7 @@ public class InvalidTokenException extends CalculatorException {
      * Konstruktor.
      * @param token The token that generated the exception.
      */
-    public InvalidTokenException(Object token) {
+    public DivisionByZeroException(Object token) {
         this.token = token;
     }
     

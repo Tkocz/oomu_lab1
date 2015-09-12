@@ -1,26 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grupp1.calculator;
 
 import grupp1.calculator.controller.Controller;
 
 /**
- *
- * @author Philip
+ * Program main class.
+ * @author Philip Arvidsson (S133686)
  */
 public class Calculator {
     /**
-     * Skriver ut ett introduktionsmeddelande.
+     * @private
+     * The program authors.
+     */
+    private static final String[] authors = { "Martin Bergqvist",
+                                              "Philip Arvidsson" };
+    
+    /**
+     * Prints out an introductory message.
      */
     private static void printIntroMsg() {
         System.out.println("nu körde du igång en polsk kalkylator som aldrig räknar rätt. dom där grekerna alltså...");
     }
     
     /**
-     * Det här är den bästa funktionen i hela programmet.
+     * Program main method. Do not call this method - it is done automatically
+     * by the Java VM.
      * 
      * @param args the command line arguments
      */
@@ -29,5 +32,4 @@ public class Calculator {
         
         new Controller().run();
     }
-    
 }
