@@ -13,7 +13,7 @@ public class DivisionByZeroException extends Exception {
     private Object token;
     
     /**
-     * Konstruktor.
+     * Constructor.
      * @param token The token that generated the exception.
      */
     public DivisionByZeroException(Object token) {

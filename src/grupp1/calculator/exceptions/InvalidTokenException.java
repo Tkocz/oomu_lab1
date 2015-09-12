@@ -13,7 +13,7 @@ public class InvalidTokenException extends CalculatorException {
     private Object token;
     
     /**
-     * Konstruktor.
+     * Constructor.
      * @param token The token that generated the exception.
      */
     public InvalidTokenException(Object token) {
