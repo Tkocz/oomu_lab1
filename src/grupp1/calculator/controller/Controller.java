@@ -25,7 +25,7 @@ public class Controller {
                 
                 if (false) throw new DivisionByZeroException(null);
                 if (false) throw new InvalidOperationException(null);
-                if (false)throw new InvalidTokenException(null);
+                if (false) throw new InvalidTokenException(null);
                 //tokenizer.createTokenFromString(s);
             }
             catch (DivisionByZeroException e) {
