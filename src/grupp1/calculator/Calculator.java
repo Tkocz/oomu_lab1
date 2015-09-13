@@ -1,6 +1,7 @@
 package grupp1.calculator;
 
 import grupp1.calculator.controller.Controller;
+import grupp1.calculator.model.Token;
 
 /**
  * Program main class.
