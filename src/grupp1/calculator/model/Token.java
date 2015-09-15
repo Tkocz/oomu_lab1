@@ -8,30 +8,29 @@ package grupp1.calculator.model;
 /**
  *
  * @author Martin Bergqvist (S141564)
- */
-public class Token {
-    public Double value = null;
-    public char operator = '\0';
-    public String tokenString;
-    
-    public void CreateToken(String tokenString){
-        
-        if(tokenString.equals("+") || tokenString.equals("-") || tokenString.equals("*") || tokenString.equals("/") || tokenString.equals("%")){    
-            Token token = new OperatorToken(tokenString);
-        }
-        else{
-            try{
-                Token token = new OperandToken(tokenString);
-            }
-            catch(NumberFormatException e){
-                System.out.println("Illegal Token format: " + e.toString());
-            }
-        }
+*/
+public abstract class Token {
+
+    private String tokenString;
+
+    public Token(String sString) {
+        tokenString = sString;
     }
-    
+  
     public Token(){
+        tokenString = "";
     }
-    public Token(String tokenString){
-        this.tokenString = tokenString;
+
+    public void SetString(String sString){
+        tokenString = sString;
+    }
+
+    public String GetString(){
+        return tokenString;
+    }
+@Override
+    public String toString(){
+        String s = "This is a Token with the StringValue of: " +tokenString;
+        return s;
     }
 }

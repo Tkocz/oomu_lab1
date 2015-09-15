@@ -8,10 +8,36 @@ package grupp1.calculator.model;
 /**
  *
  * @author Martin Bergqvist (S141564)
- */
+*/
+
 public class OperandToken extends Token{
-    public OperandToken(String tokenValue) {
-        value = Double.valueOf(tokenValue);
+    private double value;
+
+    public OperandToken(String sString){
+        super(sString);
+        try{
+            value = Double.valueOf(sString);
+        }catch(NumberFormatException e){
+            System.out.println("Illegal Token format: " + e.toString());
+        }
     }
-    
+
+    public double GetOperand(){
+        return value;
+    }
+@Override
+    public String toString(){
+        String s = "This is a OperandToken with the Value of: " +value;
+        return s;
+    }
+@Override
+    public boolean equals(Object obj){
+        return (this == obj);
+    }
+
+@Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
 }

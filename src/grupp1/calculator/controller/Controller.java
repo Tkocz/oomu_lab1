@@ -19,23 +19,31 @@ public class Controller {
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        Stack tokenStack = new Stack();
+        Stack<Token> tokenStack = new <Token>Stack();
+        Token token;
         while (true) {
-            try {
+
                 String s = scanner.next();
-                Token token = new Token(s);
+                if(s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/") || s.equals("%")){    
+                    token = new OperatorToken(s);
+                }
+                else{
+                    token = new OperandToken(s);
+                }
                 tokenStack.push(token);
-                if (false) throw new DivisionByZeroException(null);
-                if (false) throw new InvalidOperationException(null);
-                if (false) throw new InvalidTokenException(null);
-                Token poppedToken;
-                poppedToken = (Token) tokenStack.pop();
-                if(poppedToken.value !=null)
-                    System.out.println("nu skrev du " +poppedToken.tokenString);
-                else System.out.println("nu skrev du " +poppedToken.tokenString);
+                //if (false) throw new DivisionByZeroException(null);
+                //if (false) throw new InvalidOperationException(null);
+                //if (false) throw new InvalidTokenException(null);
+                Token poppedToken = tokenStack.pop();
+                if(poppedToken instanceof OperatorToken){
+                    poppedToken = (OperatorToken) poppedToken;
+                    System.out.println("" +poppedToken.GetString());
+                }
+                else 
+                    System.out.println("" +poppedToken.GetString());
                 // nyttjar ännu ej subklasser, men fungerar iaf.
             }
-            catch (DivisionByZeroException e) {
+            /*catch (DivisionByZeroException e) {
                System.out.println("DivsionByZeroException: " + e.toString());
             }
             catch (InvalidOperationException e) {
@@ -47,6 +55,6 @@ public class Controller {
             catch (Exception e) {
                 System.out.println("Exception: " + e.toString());
             }
-        }
+        }*/
     }
 }
