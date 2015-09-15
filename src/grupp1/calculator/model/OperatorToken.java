@@ -10,9 +10,8 @@ package grupp1.calculator.model;
  * @author Martin Bergqvist (S141564)
  */
 public class OperatorToken extends Token{
-    public OperatorToken(String token) {
-        super(token);
-        operator = super.operator;
+    public OperatorToken(String tokenOperator) {
+        operator = tokenOperator.charAt(0);
     }
     
 }

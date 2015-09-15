@@ -10,9 +10,8 @@ package grupp1.calculator.model;
  * @author Martin Bergqvist (S141564)
  */
 public class OperandToken extends Token{
-    public OperandToken(String token) {
-        super(token);
-        value = super.value;
+    public OperandToken(String tokenValue) {
+        value = Double.valueOf(tokenValue);
     }
     
 }

@@ -12,20 +12,26 @@ package grupp1.calculator.model;
 public class Token {
     public Double value = null;
     public char operator = '\0';
-    public Token(){
-    }
-    public Token(String token){
+    public String tokenString;
+    
+    public void CreateToken(String tokenString){
         
-        if(token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("%")){
-            operator = token.charAt(0);
+        if(tokenString.equals("+") || tokenString.equals("-") || tokenString.equals("*") || tokenString.equals("/") || tokenString.equals("%")){    
+            Token token = new OperatorToken(tokenString);
         }
         else{
             try{
-            value = Double.valueOf(token);
+                Token token = new OperandToken(tokenString);
             }
             catch(NumberFormatException e){
                 System.out.println("Illegal Token format: " + e.toString());
             }
         }
+    }
+    
+    public Token(){
+    }
+    public Token(String tokenString){
+        this.tokenString = tokenString;
     }
 }

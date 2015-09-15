@@ -3,7 +3,7 @@ package grupp1.calculator.controller;
 import grupp1.calculator.exceptions.DivisionByZeroException;
 import grupp1.calculator.exceptions.InvalidOperationException;
 import grupp1.calculator.exceptions.InvalidTokenException;
-import grupp1.calculator.model.Token;
+import grupp1.calculator.model.*;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -23,21 +23,17 @@ public class Controller {
         while (true) {
             try {
                 String s = scanner.next();
-                //System.out.println("nu skrev du " + s);
                 Token token = new Token(s);
                 tokenStack.push(token);
                 if (false) throw new DivisionByZeroException(null);
                 if (false) throw new InvalidOperationException(null);
                 if (false) throw new InvalidTokenException(null);
-                // I syfte att testa push/pop
-                Token poppedToken = new Token();
+                Token poppedToken;
                 poppedToken = (Token) tokenStack.pop();
                 if(poppedToken.value !=null)
-                    System.out.println("nu skrev du " +poppedToken.value);
-                else System.out.println("nu skrev du " +poppedToken.operator);
+                    System.out.println("nu skrev du " +poppedToken.tokenString);
+                else System.out.println("nu skrev du " +poppedToken.tokenString);
                 // nyttjar ännu ej subklasser, men fungerar iaf.
-                
-                
             }
             catch (DivisionByZeroException e) {
                System.out.println("DivsionByZeroException: " + e.toString());
