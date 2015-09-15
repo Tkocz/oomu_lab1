@@ -36,11 +36,10 @@ public class Controller {
                 //if (false) throw new InvalidTokenException(null);
                 Token poppedToken = tokenStack.pop();
                 if(poppedToken instanceof OperatorToken){
-                    poppedToken = (OperatorToken) poppedToken;
-                    System.out.println("" +poppedToken.GetString());
+                    System.out.println("" +((OperatorToken)poppedToken).GetOperator());
                 }
                 else 
-                    System.out.println("" +poppedToken.GetString());
+                    System.out.println("" +((OperandToken)poppedToken).GetOperand());
                 // nyttjar ännu ej subklasser, men fungerar iaf.
             }
             /*catch (DivisionByZeroException e) {
