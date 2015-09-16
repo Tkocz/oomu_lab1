@@ -31,12 +31,7 @@ public class OperandToken extends Token{
         return value;
     }    
 
-@Override    
-    /**
-    * 
-    * @return s returns a string explaining the type of the Token
-    * and the stored operator-value
-    */
+@Override
     public String toString(){
         String s = "This is a OperandToken with the Value of: " +value;
         return s;

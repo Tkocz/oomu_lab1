@@ -17,7 +17,6 @@ public class OperatorToken extends Token{
     /**
     * Creates an OperatorToken from the specified string.
     * @param sString The string to create a token from.
-    * @operator storing the first character in the string as a char
     */
     public OperatorToken(String sString){
         super(sString);
@@ -31,11 +30,6 @@ public class OperatorToken extends Token{
         return operator;
 }
 @Override
-    /**
-    * 
-    * @return s returns a string explaining the type of the Token
-    * and the stored operator-char
-    */
     public String toString(){
         String s = "This is OperatorToken: " +operator;
         return s;

@@ -32,7 +32,7 @@ public Controller(CalculatorConfig config) {
 
 /**
  * Calculator main method.
- * @throws java.io.IOException
+ * @throws java.io.IOException In the event of Input/Output madness
  */
 public void run() throws IOException {
     // Putting this here avoids a few allocs and collects.

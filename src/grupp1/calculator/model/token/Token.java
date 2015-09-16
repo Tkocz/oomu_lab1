@@ -7,18 +7,17 @@ package grupp1.calculator.model.token;
 
 /**
  * This class contains the superclass Token, as well as 
- * the Subclasses OperandToken & OperatorToken, needed to create a full 
+ * the Subclasses OperandToken and OperatorToken, needed to create a full 
  * mathematical expression.
  * @author Martin Bergqvist (S141564)
  */
 public abstract class Token {
-
     private String tokenString;
 
     /**
     * @param sString The string to create a token from.
     */
-    public Token(String sString) {
+    public Token(String sString){
         tokenString = sString;
     }
   
@@ -34,6 +33,7 @@ public abstract class Token {
     public void SetString(String sString){
         tokenString = sString;
     }
+    
     /**
     * @return sString The string the Token is set to
     */
@@ -41,11 +41,6 @@ public abstract class Token {
         return tokenString;
     }
 @Override
-    /**
-    * 
-    * @return s returns a string explaining the type of Class
-    * and the stored string
-    */
     public String toString(){
         String s = "This is a Token with the StringValue of: " +tokenString;
         return s;

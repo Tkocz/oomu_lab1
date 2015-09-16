@@ -11,8 +11,7 @@ import java.io.PrintStream;
 public class CalculatorConfig {
 
 /**
- * The prompt string to display, or null to not display any prompt. Default is
- * '> '.
+ * The prompt string to display, or null to not display any prompt.
  */
 public String prompt = "> ";
 
