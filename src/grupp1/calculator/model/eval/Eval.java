@@ -5,17 +5,17 @@
  */
 package grupp1.calculator.model.eval;
 
-/**
- *
- * @author Martin
- */
 import grupp1.calculator.model.token.*;
 import java.util.Stack;
 
+/**
+ * This class is used to set up and evaluate the expressions created 
+ * from the tokens stored
+ * @author Martin Bergqvist (S141564)
+ */
 public class Eval {
     
     public Eval(){
-        
     }
     
     /**
@@ -27,6 +27,12 @@ public class Eval {
         return (new String[] {"+", "-", "*", "/", "%" });
     }
     
+    /**
+     * @param tokenStack A Stack contaioning all the Tokens of
+     * the expression.
+     * @return The calculated value of the expression
+     * @author Martin Bergqvist (S141564)
+     */
     public double Eval(Stack<Token> tokenStack){
         Token node = (Token)tokenStack.pop();
         double rightNode;

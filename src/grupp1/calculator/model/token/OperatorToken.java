@@ -6,22 +6,36 @@
 package grupp1.calculator.model.token;
 
 /**
- *
+ * This class contains the Subclass OperatorToken, 
+ * and it's operation GetOperator, as well as the 
+ * override function for toString.
  * @author Martin Bergqvist (S141564)
-*/
-
+ */
 public class OperatorToken extends Token{
     private char operator;
   
+    /**
+    * Creates an OperatorToken from the specified string.
+    * @param sString The string to create a token from.
+    * @operator storing the first character in the string as a char
+    */
     public OperatorToken(String sString){
         super(sString);
         operator=sString.charAt(0);
     }
-
+    /**
+    * 
+    * @return operator returns the stored operator from the token
+    */
     public char GetOperator(){
         return operator;
 }
 @Override
+    /**
+    * 
+    * @return s returns a string explaining the type of the Token
+    * and the stored operator-char
+    */
     public String toString(){
         String s = "This is OperatorToken: " +operator;
         return s;
