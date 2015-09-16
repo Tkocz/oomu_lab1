@@ -46,11 +46,10 @@ public void run() throws IOException {
 
         String s = br.readLine();
         
-        if (config.output != System.out) {
-            // When not using System.out, we might want to output the
-            // expressions as well.
+        // When not using System.out, we might want to output the
+        // expressions as well.
+        if (config.output != System.out)
             config.output.println(s);
-        }
         
         try {
             double r = evaluateExpr(s);
