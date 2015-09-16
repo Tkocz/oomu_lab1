@@ -25,8 +25,8 @@ public class Eval {
         char operator;
         
         if(node instanceof OperatorToken){
-            rightNode = Eval(tokenStack);
             leftNode = Eval(tokenStack);
+            rightNode = Eval(tokenStack);
             
             operator = ((OperatorToken)node).GetOperator(); 
             
