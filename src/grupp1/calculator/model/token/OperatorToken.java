@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package grupp1.calculator.model;
+package grupp1.calculator.model.token;
 
 /**
  *
@@ -15,7 +15,7 @@ public class OperatorToken extends Token{
   
     public OperatorToken(String sString){
         super(sString);
-        this.operator=sString.charAt(0);
+        operator=sString.charAt(0);
     }
 
     public char GetOperator(){
