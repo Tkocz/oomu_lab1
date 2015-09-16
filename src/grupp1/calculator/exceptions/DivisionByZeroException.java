@@ -5,27 +5,35 @@ package grupp1.calculator.exceptions;
  * expression that contains a division-by-zero error.
  * @author Philip Arvidsson (S133686)
  */
-public class DivisionByZeroException extends Exception {
-    /**
-     * @private
-     * The token that generated the exception.
-     */
-    private Object token;
+public class DivisionByZeroException extends CalculatorException {
     
-    /**
-     * Constructor.
-     * @param token The token that generated the exception.
-     */
-    public DivisionByZeroException(Object token) {
-        this.token = token;
-    }
-    
-    /**
-     * Retrieves a string that describes the exception.
-     * @return A string that describes the exception.
-     */
-    @Override public String toString() {
-        // @To-do: Use the token field to create a more descriptive string.
-        return ("sån här skit vill jag inte veta av");
-    }
+/**
+ * The expression that generated the exception.
+ */
+private String expr;
+
+/**
+ * Constructor.
+ * @param expr The expression that generated the exception.
+ */
+public DivisionByZeroException(String expr) {
+    this.expr = expr;
+}
+
+/**
+ * Gets the expression that generated the exception.
+ * @return The expression that generated the exception.
+ */
+public String getExpression() {
+    return (expr);
+}
+
+/**
+ * Retrieves a string that describes the exception.
+ * @return A string that describes the exception.
+ */
+@Override public String toString() {
+    return ("An attempt was made to divide by zero: '" + expr + "'");
+}
+
 }

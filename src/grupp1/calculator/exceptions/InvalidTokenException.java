@@ -6,26 +6,34 @@ package grupp1.calculator.exceptions;
  * @author Philip Arvidsson (S133686)
  */
 public class InvalidTokenException extends CalculatorException {
-    /**
-     * @private
-     * The token that generated the exception.
-     */
-    private Object token;
-    
-    /**
-     * Constructor.
-     * @param token The token that generated the exception.
-     */
-    public InvalidTokenException(Object token) {
-        this.token = token;
-    }
-    
-    /**
-     * Retrieves a string that describes the exception.
-     * @return A string that describes the exception.
-     */
-    @Override public String toString() {
-        // @To-do: Use the token field to create a more descriptive string.
-        return ("sån här skit vill jag inte veta av");
-    }
+
+/**
+ * The token string that generated the exception.
+ */
+private String token;
+
+/**
+ * Constructor.
+ * @param token The token string that generated the exception.
+ */
+public InvalidTokenException(String token) {
+    this.token = token;
+}
+
+/**
+ * Gets the token string that generated the exception.
+ * @return The token string that generated the exception.
+ */
+public String getToken() {
+    return (token);
+}
+
+/**
+ * Retrieves a string that describes the exception.
+ * @return A string that describes the exception.
+ */
+@Override public String toString() {
+    return ("Invalid token encountered: '" + token + "'");
+}
+
 }
