@@ -18,6 +18,15 @@ public class Eval {
         
     }
     
+    /**
+     * Retrieves an array containing all known operators.
+     * @return An array containing all known operators.
+     * @author Philip Arvidsson (S133686)
+     */
+    public String[] getKnownOperators() {
+        return (new String[] {"+", "-", "*", "/", "%" });
+    }
+    
     public double Eval(Stack<Token> tokenStack){
         Token node = (Token)tokenStack.pop();
         double rightNode;
