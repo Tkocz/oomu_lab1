@@ -19,20 +19,23 @@ public class Controller {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Stack<Token> tokenStack = new <Token>Stack();
-        Eval eval= new Eval();
+        Eval eval = new Eval();
         Token token;
         while (true) {
-
-                String s = scanner.next();
-                if(s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/") || s.equals("%")){    
-                    token = new OperatorToken(s);
-                }
-                else{
-                    token = new OperandToken(s);
-                }
-                tokenStack.push(token);
-                if(s.equals("\n"))
-                    System.out.println("Result: " + eval.Eval(tokenStack));
+            
+        String string = scanner.nextLine();
+        Scanner stringScanner = new Scanner(string);
+        while(stringScanner.hasNext()){
+            String s = stringScanner.next();
+            if(s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/") || s.equals("%")){    
+                token = new OperatorToken(s);
+            }
+            else{
+                token = new OperandToken(s);
+            }
+            tokenStack.push(token);
+            }
+                System.out.println("Result: " + eval.Eval(tokenStack));
         }
     }
 }
