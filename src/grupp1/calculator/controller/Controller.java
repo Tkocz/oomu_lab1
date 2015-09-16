@@ -19,7 +19,7 @@ public class Controller {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Stack<Token> tokenStack = new <Token>Stack();
-        //Eval eval = new Eval();
+        Eval eval= new Eval();
         Token token;
         while (true) {
 
@@ -32,7 +32,7 @@ public class Controller {
                 }
                 tokenStack.push(token);
                 if(s.equals("\n"))
-                    System.out.println("Result: " + Eval(tokenStack));
+                    System.out.println("Result: " + eval.Eval(tokenStack));
         }
     }
 }
