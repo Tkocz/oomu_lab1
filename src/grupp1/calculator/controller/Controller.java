@@ -35,6 +35,9 @@ public Controller(CalculatorConfig config) {
  * @throws java.io.IOException
  */
 public void run() throws IOException {
+    // Putting this here avoids a few allocs and collects.
+    String result_format = "\t= %." + config.precision + "f";
+    
     // Auto-closeables.
     try (InputStreamReader isr = new InputStreamReader(config.input)) {
     try (BufferedReader    br  = new BufferedReader   (isr)      ) {
@@ -53,8 +56,8 @@ public void run() throws IOException {
         
         try {
             double r = evaluateExpr(s);
-            String result = String.format("\t= %." + config.precision + "f", r);
-            config.output.println(result);
+            
+            config.output.println(String.format(result_format, r));
         }
         catch (Exception e) {
             System.out.println(e.toString());
