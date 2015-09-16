@@ -6,7 +6,7 @@ import java.io.PrintStream;
 
 /**
  * Represents the calculator configuration.
- * @author Philip Arvidss (S133686)
+ * @author Philip Arvidsson (S133686)
  */
 public class CalculatorConfig {
 
