@@ -40,22 +40,21 @@ public class Eval {
         char operator;
         
         if(node instanceof OperatorToken){
-            leftNode = Eval(tokenStack);
             rightNode = Eval(tokenStack);
-            
+            leftNode = Eval(tokenStack);
             operator = ((OperatorToken)node).GetOperator(); 
             
             switch (operator) {
                 case '+':
-                    return(rightNode + leftNode);
+                    return(leftNode + rightNode);
                 case '-':
-                    return(rightNode - leftNode);
+                    return(leftNode - rightNode);
                 case '*':
-                    return(rightNode * leftNode);
+                    return(leftNode * rightNode);
                 case '/':
-                    return(rightNode / leftNode);
+                    return(leftNode / rightNode);
                 case '%':
-                    return(rightNode % leftNode);
+                    return(leftNode % rightNode);
             }
         }
     return (((OperandToken)node).GetOperand());

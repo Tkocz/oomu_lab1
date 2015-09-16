@@ -22,7 +22,8 @@ public abstract class Token {
     }
   
     /**
-    */
+     * 
+     */
     public Token(){
         tokenString = "";
     }
@@ -40,6 +41,7 @@ public abstract class Token {
     public String GetString(){
         return tokenString;
     }
+ 
 @Override
     public String toString(){
         String s = "This is a Token with the StringValue of: " +tokenString;
