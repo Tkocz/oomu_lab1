@@ -1,6 +1,7 @@
 package grupp1.calculator;
 
 import grupp1.calculator.model.eval.Eval;
+import grupp1.calculator.view.ResultPrinter;
 import java.io.InputStream;
 import java.io.PrintStream;
 

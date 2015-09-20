@@ -3,6 +3,7 @@ package grupp1.calculator.controller;
 import grupp1.calculator.CalculatorConfig;
 import grupp1.calculator.model.token.*;
 import grupp1.calculator.exceptions.*;
+import grupp1.calculator.view.ResultPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,9 +35,11 @@ public Controller(CalculatorConfig config) {
  * Calculator main method.
  * @throws java.io.IOException In the event of Input/Output madness
  */
-public void run() throws IOException {
-    // Putting this here avoids a few allocs and collects.
-    String result_format = "\t= %." + config.precision + "f";
+public void run() throws IOException, Exception {
+    // Optimally, this should be passed in to this class so that the output
+    // format can be modified more easily.
+    ResultPrinter result_printer = new ResultPrinter(config.output,
+                                                     config.precision);
     
     // Auto-closeables.
     try (InputStreamReader isr = new InputStreamReader(config.input)) {
@@ -49,6 +52,9 @@ public void run() throws IOException {
 
         String s = br.readLine();
         
+        if (s.equals(""))
+            break; // ...and we're done!
+        
         // When not using System.out, we might want to output the
         // expressions as well.
         if (config.output != System.out)
@@ -57,13 +63,17 @@ public void run() throws IOException {
         try {
             double r = evaluateExpr(s);
             
-            config.output.println(String.format(result_format, r));
+            result_printer.printResult(r);
         }
         catch (Exception e) {
             System.out.println(e.toString());
             
             if (config.output != System.out)
-                config.output.println(e.toString());   
+                config.output.println(e.toString());
+            
+            for (StackTraceElement ste : e.getStackTrace())
+                System.out.println(ste.toString());
+                
         }
     }
 
