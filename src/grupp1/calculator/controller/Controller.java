@@ -79,10 +79,15 @@ public void run() throws IOException {
  */
 private double evaluateExpr(String s) throws InvalidTokenException, DivisionByZeroException {
     Stack<Token> tokens = new Stack<>();
+    int counter = 0;
 
-    for (String str : s.split(" "))
+    for (String str : s.split(" ")){
         tokens.push(stringToToken(str));
-
+        counter++;
+    }
+    if (tokens.size() == 2)
+        throw new InvalidOperationException();
+    
     double result = config.evaluator.Eval(tokens);
     if (!tokens.isEmpty())
         throw new InvalidOperationException();
