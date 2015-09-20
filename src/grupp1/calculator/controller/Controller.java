@@ -75,14 +75,19 @@ public void run() throws IOException {
  * @param s The expression string.
  * @return The result of the expression.
  * @throws InvalidTokenException An invalid token was encountered.
+ * @throws DivisionByZeroException An attempt to divide by zero was encountered.
  */
-private double evaluateExpr(String s) throws InvalidTokenException {
+private double evaluateExpr(String s) throws InvalidTokenException, DivisionByZeroException {
     Stack<Token> tokens = new Stack<>();
 
     for (String str : s.split(" "))
         tokens.push(stringToToken(str));
 
-    return (config.evaluator.Eval(tokens));
+    double result = config.evaluator.Eval(tokens);
+    if (!tokens.isEmpty())
+        throw new InvalidOperationException();
+    return (result);
+        
 }
 
 /**

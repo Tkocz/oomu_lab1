@@ -45,8 +45,10 @@ public class Eval {
             String exceptionString;
 
             if(node instanceof OperatorToken){
+
                 rightNode = Eval(tokenStack);
                 leftNode = Eval(tokenStack);
+
                 operator = ((OperatorToken)node).GetOperator(); 
 
 
@@ -69,7 +71,7 @@ public class Eval {
                         exceptionString = "" +leftNode +"/" +rightNode;
                         throw new DivisionByZeroException(exceptionString);
                 }
-            }
+           }
         }
         return (((OperandToken)node).GetOperand());
     }
