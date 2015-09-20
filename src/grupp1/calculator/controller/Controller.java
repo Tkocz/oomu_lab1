@@ -71,8 +71,8 @@ public void run() throws IOException {
             if (config.output != System.out)
                 config.output.println(e.toString());
             
-            for (StackTraceElement ste : e.getStackTrace())
-                System.out.println(ste.toString());
+            //for (StackTraceElement ste : e.getStackTrace())
+            //    System.out.println(ste.toString());
                 
         }
     }
