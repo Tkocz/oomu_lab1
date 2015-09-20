@@ -35,7 +35,7 @@ public Controller(CalculatorConfig config) {
  * Calculator main method.
  * @throws java.io.IOException In the event of Input/Output madness
  */
-public void run() throws IOException, Exception {
+public void run() throws IOException {
     // Optimally, this should be passed in to this class so that the output
     // format can be modified more easily.
     ResultPrinter result_printer = new ResultPrinter(config.output,
