@@ -21,7 +21,7 @@ public InvalidOperationException() {
  * @return A string that describes the exception.
  */
 @Override public String toString() {
-    return ("InvalidOperationException");
+    return ("The operation is invalid.");
 }
 
 }
