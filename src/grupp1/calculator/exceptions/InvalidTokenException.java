@@ -33,7 +33,7 @@ public String getToken() {
  * @return A string that describes the exception.
  */
 @Override public String toString() {
-    return ("Invalid token encountered: '" + token + "'");
+    return ("Invalid token exception: " + token);
 }
 
 }

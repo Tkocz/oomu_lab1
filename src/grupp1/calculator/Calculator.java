@@ -25,8 +25,7 @@ private static void printIntroMsg() {
         System.out.println("\t" + author);
 
     System.out.println("");
-    System.out.println("Welcome. Enter an RPN expression below to");
-    System.out.println("  calculate its result...");
+    System.out.println("Ange RPN uttryck <retur> (tom sträng = avsluta):");
     System.out.println("");
 }
 
