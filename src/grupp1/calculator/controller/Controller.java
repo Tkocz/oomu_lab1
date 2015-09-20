@@ -52,7 +52,7 @@ public void run() throws IOException {
 
         String s = br.readLine();
         
-        if (s.equals(""))
+        if (s.equals("") || s == null)
             break; // ...and we're done!
         
         // When not using System.out, we might want to output the
