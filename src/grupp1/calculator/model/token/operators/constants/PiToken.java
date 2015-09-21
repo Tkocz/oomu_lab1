@@ -13,10 +13,10 @@ public class PiToken extends OperatorToken {
 
 /**
  * Constructor.
- * @param op Operator string.
+ * @param name Constant name.
  */
-public PiToken(String op) {
-    super(op);
+public PiToken(String name) {
+    super(name);
 }
 
 /**

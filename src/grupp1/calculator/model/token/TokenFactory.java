@@ -46,7 +46,15 @@ public Token getToken(String s) {
     // Constants.
     case "pi": return new PiToken(s);
         
+    // Special.
+        
+    case "=": // Alias for 'set'.
+    case "set": return new SetToken(s);
+        
     }
+    
+    if (s.charAt(0) == '$')
+        return new VarToken(s);
     
     try                             { Double.parseDouble(s); }
     catch (NumberFormatException e) { return null;           }

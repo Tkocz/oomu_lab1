@@ -85,8 +85,14 @@ public void run() throws IOException {
 private double evaluateExpr(String s) throws Exception {
     Stack<Token> seq = new Stack<>();
 
-    for (String str : s.split(" "))
-        seq.push(config.token_factory.getToken(str));
+    for (String str : s.split(" ")) {
+        Token tok = config.token_factory.getToken(str);
+        
+        if (tok == null)
+            throw new InvalidTokenException(str);
+        
+        seq.push(tok);
+    }
     
     double r = seq.pop().eval(seq);
         

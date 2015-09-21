@@ -60,6 +60,10 @@ public static void main(String[] args) throws Exception {
         System.out.println("Exception:");
         System.out.println("");
         System.out.println(e.toString());
+        System.out.println("Stack trace:");
+        
+        for (StackTraceElement ste : e.getStackTrace())
+            System.out.println("in " + ste.toString());
     }
 }
 
