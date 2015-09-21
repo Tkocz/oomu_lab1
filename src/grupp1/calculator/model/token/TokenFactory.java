@@ -5,18 +5,17 @@
  */
 package grupp1.calculator.model.token;
 
-import grupp1.calculator.exceptions.InvalidTokenException;
 import grupp1.calculator.model.token.operators.binary.AddToken;
 import grupp1.calculator.model.token.operators.binary.DivideToken;
 import grupp1.calculator.model.token.operators.binary.ExponentToken;
 import grupp1.calculator.model.token.operators.binary.ModuloToken;
 import grupp1.calculator.model.token.operators.binary.MultiplyToken;
 import grupp1.calculator.model.token.operators.binary.SubtractToken;
+import grupp1.calculator.model.token.operators.constants.PiToken;
 import grupp1.calculator.model.token.operators.unary.AcosToken;
 import grupp1.calculator.model.token.operators.unary.AsinToken;
 import grupp1.calculator.model.token.operators.unary.AtanToken;
 import grupp1.calculator.model.token.operators.unary.CosToken;
-import grupp1.calculator.model.token.operators.unary.PiToken;
 import grupp1.calculator.model.token.operators.unary.RadToken;
 import grupp1.calculator.model.token.operators.unary.SinToken;
 import grupp1.calculator.model.token.operators.unary.TanToken;
