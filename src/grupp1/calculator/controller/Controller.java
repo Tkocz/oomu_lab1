@@ -52,7 +52,7 @@ public void run() throws IOException {
 
         String s = br.readLine();
         
-        if (s.equals("") || s == null)
+        if (s == null || s.equals(""))
             break; // ...and we're done!
         
         // When not using System.out, we might want to output the
@@ -69,11 +69,7 @@ public void run() throws IOException {
             System.out.println(e.toString());
             
             if (config.output != System.out)
-                config.output.println(e.toString());
-            
-            //for (StackTraceElement ste : e.getStackTrace())
-            //    System.out.println(ste.toString());
-                
+                config.output.println(e.toString());                
         }
     }
 
