@@ -38,7 +38,6 @@ public class OperandToken extends Token{
      * @param seq The sequence to evaluate.
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
-     * @throws java.lang.Exception Evaluation exception.
      */
     @Override
     public double eval(Stack<Token> seq) {

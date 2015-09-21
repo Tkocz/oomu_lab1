@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="trunk">
+  <ClassDiagramComponents>
+    <Class name="Calculator" package="grupp1.calculator" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="authors" type="String[]" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="printIntroMsg" returnType="void" visibility="private" isStatic="true"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CalculatorConfig" package="grupp1.calculator" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="prompt" type="String" visibility="public"/>
+        <Field name="input" type="InputStream" visibility="public"/>
+        <Field name="output" type="PrintStream" visibility="public"/>
+        <Field name="precision" type="int" visibility="public"/>
+        <Field name="token_factory" type="TokenFactory" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Controller" package="grupp1.calculator.controller" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="config" type="CalculatorConfig" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CalculatorConfig" name="config"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="evaluateExpr" returnType="double" visibility="private">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CalculatorException" package="grupp1.calculator.exceptions" visibility="public" isAbstract="true" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DivisionByZeroException" package="grupp1.calculator.exceptions" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="expr" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="expr"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getExpression" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="InvalidOperationException" package="grupp1.calculator.exceptions" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="InvalidTokenException" package="grupp1.calculator.exceptions" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="token" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="token"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getToken" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OperandToken" package="grupp1.calculator.model.token" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="value" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="sString"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="GetOperand" returnType="double" visibility="public"/>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DivideToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ExponentToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ModuloToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MultiplyToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SubtractToken" package="grupp1.calculator.model.token.operators.binary" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PiToken" package="grupp1.calculator.model.token.operators.constants" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AcosToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AsinToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AtanToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CosToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RadToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SinToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TanToken" package="grupp1.calculator.model.token.operators.unary" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="op"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="eval" returnType="double" visibility="public">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OperatorToken" package="grupp1.calculator.model.token" visibility="public" isAbstract="true" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="operator" type="char" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="sString"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="GetOperator" returnType="char" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Token" package="grupp1.calculator.model.token" visibility="public" isAbstract="true" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="tokenString" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="sString"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="SetString" returnType="void" visibility="public">
+          <Argument type="String" name="sString"/>
+        </Method>
+        <Method name="GetString" returnType="String" visibility="public"/>
+        <Method name="eval" returnType="double" visibility="public" isAbstract="true">
+          <Argument type="Stack&lt;Token&gt;" name="seq"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TokenFactory" package="grupp1.calculator.model.token" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getToken" returnType="Token" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ResultPrinter" package="grupp1.calculator.view" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="output" type="PrintStream" visibility="private"/>
+        <Field name="result_format" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="PrintStream" name="output"/>
+          <Argument type="int" name="precision"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="PrintStream" name="output"/>
+          <Argument type="String" name="result_format"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="printResult" returnType="void" visibility="public">
+          <Argument type="double" name="r"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.ModuloToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.Token" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.OperandToken" target="grupp1.calculator.model.token.Token"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.RadToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.AcosToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.CosToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <HasRelation name="token_factory" source="grupp1.calculator.CalculatorConfig" target="grupp1.calculator.model.token.TokenFactory" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.AddToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.AcosToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="config" source="grupp1.calculator.controller.Controller" target="grupp1.calculator.CalculatorConfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.AddToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.ExponentToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.exceptions.InvalidTokenException" target="grupp1.calculator.exceptions.CalculatorException"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.MultiplyToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.DivideToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.TanToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.AsinToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.AtanToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.RadToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.CosToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.constants.PiToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.TokenFactory" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.SubtractToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.SinToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.TanToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.OperandToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.constants.PiToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.OperatorToken" target="grupp1.calculator.model.token.Token"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.unary.SinToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.ModuloToken" target="grupp1.calculator.model.token.OperatorToken"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.SubtractToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.AtanToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.ExponentToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.binary.MultiplyToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="grupp1.calculator.model.token.operators.unary.AsinToken" target="grupp1.calculator.model.token.Token" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="grupp1.calculator.exceptions.DivisionByZeroException" target="grupp1.calculator.exceptions.CalculatorException"/>
+    <IsRelation name="is" source="grupp1.calculator.model.token.operators.binary.DivideToken" target="grupp1.calculator.model.token.OperatorToken"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
