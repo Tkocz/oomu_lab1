@@ -22,7 +22,7 @@ public class TokenFactory {
  * @return A token representing the specified string.
  */
 public Token getToken(String s) {
-    // Preferably, this should be done with RTTI; reflections and annotations.
+    // Preferably, this should be done with RTTI; reflection and annotations.
     
     switch (s) {
         
