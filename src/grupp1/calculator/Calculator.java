@@ -34,11 +34,23 @@ private static void printIntroMsg() {
  * by the Java VM.
  * 
  * @param args the command line arguments
+ * @throws java.lang.Exception if output-file cannot be created
  */
-public static void main(String[] args) {
-    printIntroMsg();
+public static void main(String[] args) throws Exception {
+    if(!(args.length == 0 || args.length == 2)){
+        System.out.println("Syntax: java Calculator [källfil destinationsfil]");
+        System.exit(0);
+    }
     
     CalculatorConfig config = new CalculatorConfig();
+    
+    if(args.length == 0)
+        printIntroMsg();
+
+    if(args.length == 2){
+        config.input = new java.io.FileInputStream(args[0]);
+        config.output = new java.io.PrintStream(new java.io.FileOutputStream(args[1]));
+    }
 
     try {
         new Controller(config).run();   
