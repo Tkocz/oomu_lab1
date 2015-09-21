@@ -5,6 +5,8 @@
  */
 package grupp1.calculator.model.token;
 
+import java.util.Stack;
+
 /**
  * This class contains the superclass Token, as well as 
  * the Subclasses OperandToken and OperatorToken, needed to create a full 
@@ -41,6 +43,17 @@ public abstract class Token {
     public String GetString(){
         return tokenString;
     }
+    
+    /**
+     * Evaluates the specified token sequence to produce an arithmetic result.
+     * @param seq The sequence to evaluate.
+     * @return The result of evaluating the sequence.
+     * @author Philip Arvidsson (S133686)
+     * @throws java.lang.Exception Evaluation exception.
+     */
+    public abstract double eval(Stack<Token> seq)
+            // We have to add this to allow exceptions in subclasses.
+            throws Exception;
  
 @Override
     public String toString(){

@@ -5,6 +5,8 @@
  */
 package grupp1.calculator.model.token;
 
+import java.util.Stack;
+
 /**
  * This class contains the Subclass OperandToken, 
  * and it's operation GetOperand, as well as the 
@@ -29,7 +31,19 @@ public class OperandToken extends Token{
     */
     public double GetOperand(){
         return value;
-    }    
+    }
+    
+    /**
+     * Evaluates the specified token sequence to produce an arithmetic result.
+     * @param seq The sequence to evaluate.
+     * @return The result of evaluating the sequence.
+     * @author Philip Arvidsson (S133686)
+     * @throws java.lang.Exception Evaluation exception.
+     */
+    @Override
+    public double eval(Stack<Token> seq) {
+        return (value);
+    }
 
 @Override
     public String toString(){

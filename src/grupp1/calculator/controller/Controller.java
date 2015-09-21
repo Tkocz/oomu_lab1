@@ -83,56 +83,19 @@ public void run() throws IOException {
  * @throws InvalidTokenException An invalid token was encountered.
  * @throws DivisionByZeroException An attempt to divide by zero was encountered.
  */
-private double evaluateExpr(String s) throws InvalidTokenException, DivisionByZeroException {
-    Stack<Token> tokens = new Stack<>();
-    int counter = 0;
+private double evaluateExpr(String s) throws Exception {
+    Stack<Token> seq = new Stack<>();
 
-    for (String str : s.split(" ")){
-        tokens.push(stringToToken(str));
-        counter++;
-    }
-    if (tokens.size() == 2)
+    for (String str : s.split(" "))
+        seq.push(config.token_factory.getToken(str));
+    
+    double r = seq.pop().eval(seq);
+        
+    if (!seq.isEmpty())
         throw new InvalidOperationException();
     
-    double result = config.evaluator.Eval(tokens);
-    if (!tokens.isEmpty())
-        throw new InvalidOperationException();
-    return (result);
+    return (r);
         
 }
 
-/**
- * Returns a value indicating whether the specified string represents a
- * mathematical operator understood by the calculator.
- * @param str The string to check.
- * @return True if the specified string contains a known, mathematical
- *         operator, otherwise false.
- */
-private boolean isOperator(String str) {
-    boolean is_operator = false;
-    
-    for (String op : config.evaluator.getKnownOperators())
-        is_operator = is_operator || str.equals(op);
-    
-    return (is_operator);
-}
-
-/**
- * Creates a token from the specified string.
- * @param str The string to create a token from.
- * @return A token representing the contents of the string.
- * @throws InvalidTokenException A token could not be created from the specified
- *         string.
- */
-private Token stringToToken(String str) throws InvalidTokenException {
-    if (isOperator(str))
-        return (new OperatorToken(str));
-
-    // Make sure we'll be able to construct an instance of OperandToken...
-    try                             { Double.parseDouble(str);              }
-    catch (NumberFormatException e) { throw new InvalidTokenException(str); }
-
-    return (new OperandToken(str));
-}
-    
 }

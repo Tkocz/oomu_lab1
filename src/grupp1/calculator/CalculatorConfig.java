@@ -1,7 +1,6 @@
 package grupp1.calculator;
 
-import grupp1.calculator.model.eval.Eval;
-import grupp1.calculator.view.ResultPrinter;
+import grupp1.calculator.model.token.TokenFactory;
 import java.io.InputStream;
 import java.io.PrintStream;
 
@@ -29,14 +28,14 @@ public InputStream input = System.in;
 public PrintStream output = System.out;
 
 /**
- * The evaluator to use for evaluating expressions.
- */
-public Eval evaluator = new Eval();
-
-/**
  * The precision, in number of decimals, to display in results. The default
  * value is 4.
  */
 public int precision = 4;
+
+/**
+ * The token factory to use for acquiring tokens (operators, etc.).
+ */
+public TokenFactory token_factory = new TokenFactory();
 
 }

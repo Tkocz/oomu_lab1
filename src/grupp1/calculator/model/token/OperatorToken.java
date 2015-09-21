@@ -11,7 +11,7 @@ package grupp1.calculator.model.token;
  * override function for toString.
  * @author Martin Bergqvist (S141564)
  */
-public class OperatorToken extends Token{
+public abstract class OperatorToken extends Token{
     private char operator;
   
     /**
@@ -29,6 +29,7 @@ public class OperatorToken extends Token{
     public char GetOperator(){
         return operator;
 }
+    
 @Override
     public String toString(){
         String s = "This is OperatorToken: " +operator;
