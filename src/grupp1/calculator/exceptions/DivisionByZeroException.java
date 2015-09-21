@@ -33,7 +33,7 @@ public String getExpression() {
  * @return A string that describes the exception.
  */
 @Override public String toString() {
-    return ("An attempt was made to divide by zero: " + expr);
+    return ("Exception: Divide by zero: " + expr);
 }
 
 }

@@ -62,7 +62,6 @@ public void run() throws IOException {
         
         try {
             double r = evaluateExpr(s);
-            
             result_printer.printResult(r);
         }
         catch (Exception e) {

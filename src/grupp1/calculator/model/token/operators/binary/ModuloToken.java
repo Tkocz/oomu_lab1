@@ -1,5 +1,6 @@
 package grupp1.calculator.model.token.operators.binary;
 
+import grupp1.calculator.exceptions.DivisionByZeroException;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import java.util.Stack;
@@ -32,7 +33,10 @@ public double eval(Stack<Token> seq) throws Exception {
 
     double b = seq.pop().eval(seq);
     double a = seq.pop().eval(seq);
-
+    if (Math.abs(b) < 0.000000001) {
+        throw new DivisionByZeroException(
+                String.format("%f / %f", a, b));
+    }
     return (a % b);
 }
 
