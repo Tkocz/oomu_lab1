@@ -30,7 +30,9 @@ public DivideToken(String op) {
 public double eval(Stack<Token> seq) throws Exception {
     double divisor  = seq.pop().eval(seq);
     double dividend = seq.pop().eval(seq);
-
+    
+    // Might as well use an epsilon value here since equality testing for floats
+    // and doubles is unsafe anyway.
     if (Math.abs(divisor) < 0.000000001) {
         throw new DivisionByZeroException(
                 String.format("%f / %f", dividend, divisor));
