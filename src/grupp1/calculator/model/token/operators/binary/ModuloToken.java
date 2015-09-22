@@ -1,6 +1,7 @@
 package grupp1.calculator.model.token.operators.binary;
 
 import grupp1.calculator.exceptions.DivisionByZeroException;
+import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import java.util.Stack;
@@ -9,6 +10,7 @@ import java.util.Stack;
  * Provides a token for performing modulo.
  * @author Philip Arvidsson (S133686)
  */
+@OperatorInfo(op = "%")
 public class ModuloToken extends OperatorToken {
 
 /**

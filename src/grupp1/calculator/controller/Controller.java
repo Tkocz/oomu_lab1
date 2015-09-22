@@ -42,8 +42,9 @@ public void run() throws IOException {
                                                      config.precision);
     
     // Auto-closeables.
-    try (InputStreamReader isr = new InputStreamReader(config.input)) {
-    try (BufferedReader    br  = new BufferedReader   (isr)      ) {
+    try (InputStreamReader isr = new InputStreamReader(config.input);
+         BufferedReader    br  = new BufferedReader   (isr)      )
+    {
 
     while (true) {
         // The prompt is only useful for System.out, really.
@@ -72,7 +73,7 @@ public void run() throws IOException {
         }
     }
 
-    }} // -
+    } // -
 }
 
 /**

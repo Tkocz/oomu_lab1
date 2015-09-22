@@ -1,6 +1,7 @@
 package grupp1.calculator.model.token.operators.binary;
 
 import grupp1.calculator.exceptions.InvalidOperationException;
+import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import grupp1.calculator.model.token.operators.unary.VarToken;
@@ -10,6 +11,7 @@ import java.util.Stack;
  * Provides a token for setting variable values.
  * @author Philip Arvidsson (S133686)
  */
+@OperatorInfo(op = "=")
 public class SetToken extends OperatorToken {
 
 /**

@@ -1,5 +1,6 @@
 package grupp1.calculator.model.token.operators.constants;
 
+import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import java.util.Stack;
@@ -9,6 +10,7 @@ import java.util.Stack;
  * unary operator.
  * @author Philip Arvidsson (S133686)
  */
+@OperatorInfo(op = "pi")
 public class PiToken extends OperatorToken {
 
 /**
