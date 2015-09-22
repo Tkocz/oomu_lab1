@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grupp1.calculator.model.token;
 
 import java.util.Stack;
 
 /**
- * This class contains the Subclass OperandToken, 
+ * Contains the Subclass OperandToken, 
  * and it's operation GetOperand, as well as the 
  * override function for toString.
  * @author Martin Bergqvist (S141564)

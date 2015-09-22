@@ -34,6 +34,7 @@ private static void printIntroMsg() {
  * by the Java VM.
  * 
  * @param args the command line arguments
+ * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception if output-file cannot be created
  */
 public static void main(String[] args) throws Exception {

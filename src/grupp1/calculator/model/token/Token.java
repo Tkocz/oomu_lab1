@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grupp1.calculator.model.token;
 
 import java.util.Stack;
 
 /**
- * This class contains the superclass Token, as well as 
+ * Contains the superclass Token, as well as 
  * the Subclasses OperandToken and OperatorToken, needed to create a full 
  * mathematical expression.
  * @author Martin Bergqvist (S141564)
