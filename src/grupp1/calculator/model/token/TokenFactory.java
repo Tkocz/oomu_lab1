@@ -83,7 +83,6 @@ public Token getToken(String s) {
     if (op_token_cache.containsKey(s))
         return newToken(op_token_cache.get(s), s);
 
-    
     Class[] classes;
     
     // A sane person would cache all of this crap below... but hey, who cares
