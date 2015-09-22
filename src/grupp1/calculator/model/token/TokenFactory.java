@@ -86,7 +86,6 @@ private static Token newToken(Class clazz, String s) {
         System.out.println(e.toString());
         System.out.println(e.getStackTrace()[0].toString());
     }
-
     
     return (null);
 }
