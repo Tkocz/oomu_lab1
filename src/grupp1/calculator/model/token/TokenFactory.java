@@ -30,9 +30,7 @@ private static final Map<String, Class> op_token_cache = new HashMap<>();
  */
 private static Class[] getClasses(String package_name) {
     List<Class> classes      = new ArrayList<>();
-    ClassLoader class_loader = TokenFactory.class.getClassLoader();
-    String      package_url  = package_name.replaceAll("[.]", "/");
-    URL         url          = class_loader.getResource(package_url);
+    String      package_url  = package_name.replace(".", "/");
     
     // Basically, what we do is load all classes in the specified package...
     
