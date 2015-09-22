@@ -7,7 +7,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Provides a factory class that creates appropriate tokens from strings.
@@ -15,6 +17,11 @@ import java.util.List;
  */
 public class TokenFactory {
 
+/**
+ * Cache for faster look-up.
+ */
+private static Map<String, Class> op_token_cache = new HashMap<String, Class>();
+    
 /**
  * Extremely l33t uber hax for retrieving all classes in a package.
  * @return Array of classes.
@@ -73,6 +80,10 @@ private static Token newToken(Class clazz, String s) {
  * @return A token representing the specified string.
  */
 public Token getToken(String s) {
+    if (op_token_cache.containsKey(s))
+        return newToken(op_token_cache.get(s), s);
+
+    
     Class[] classes;
     
     // A sane person would cache all of this crap below... but hey, who cares
@@ -82,24 +93,30 @@ public Token getToken(String s) {
     classes = getClasses("grupp1.calculator.model.token.operators.binary");
     for (Class clazz : classes) {
         Annotation a = clazz.getAnnotation(OperatorInfo.class);
-        if (a != null && ((OperatorInfo)a).op().equals(s))
+        if (a != null && ((OperatorInfo)a).op().equals(s)) {
+            op_token_cache.put(s, clazz);
             return newToken(clazz, s);
+        }
     }
     
     // Unary operators.
     classes = getClasses("grupp1.calculator.model.token.operators.unary");
     for (Class clazz : classes) {
         Annotation a = clazz.getAnnotation(OperatorInfo.class);
-        if (a != null && ((OperatorInfo)a).op().equals(s))
+        if (a != null && ((OperatorInfo)a).op().equals(s)) {
+            op_token_cache.put(s, clazz);
             return newToken(clazz, s);
+        }
     }
     
     // Constants.
     classes = getClasses("grupp1.calculator.model.token.operators.constants");
     for (Class clazz : classes) {
         Annotation a = clazz.getAnnotation(OperatorInfo.class);
-        if (a != null && ((OperatorInfo)a).op().equals(s))
+        if (a != null && ((OperatorInfo)a).op().equals(s)) {
+            op_token_cache.put(s, clazz);
             return newToken(clazz, s);
+        }
     }
     
     // Variables.
