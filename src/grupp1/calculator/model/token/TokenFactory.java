@@ -1,10 +1,7 @@
 package grupp1.calculator.model.token;
 
 import grupp1.calculator.model.token.operators.unary.*;
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.net.URL;
@@ -16,7 +13,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
 /**
- * Provides a factory class that creates appropriate tokens from strings.
+ * Provides a factory class that creates appropriate tokens from strings. This
+ * is where all the magic happens. h4xx0rz $upr3m3!
  * @author Philip Arvidsson (S133686)
  */
 public class TokenFactory {
