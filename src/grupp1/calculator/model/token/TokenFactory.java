@@ -1,8 +1,10 @@
 package grupp1.calculator.model.token;
 
 import grupp1.calculator.model.token.operators.unary.*;
-import java.io.DataInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.net.URL;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 
 /**
  * Provides a factory class that creates appropriate tokens from strings.
@@ -34,17 +38,33 @@ private static Class[] getClasses(String package_name) {
     
     // Basically, what we do is load all classes in the specified package...
     
-    try (InputStream     is  = (InputStream)url.getContent();
-         DataInputStream dis = new DataInputStream(is))
+    String jar_name;
+    
+    try {
+        jar_name = TokenFactory.class.getProtectionDomain()
+                              .getCodeSource().getLocation().toURI().getPath();    
+    }
+    catch (Exception e) {
+        // Might as well try...
+        jar_name = "oomj-lab.jar";
+    }
+    
+    try (FileInputStream fis = new FileInputStream(jar_name);
+         JarInputStream  jar = new JarInputStream(fis))
     {
         
-    String s;
-    while ((s = dis.readLine()) != null) {
-        String class_name = s.substring(0, s.lastIndexOf('.'));
-        Class clazz = Class.forName(package_name + "." + class_name);
-        classes.add(clazz);
+    JarEntry je;
+    while ((je = jar.getNextJarEntry()) != null) {
+        String name = je.getName();
+        if (name.startsWith(package_url) && name.endsWith(".class")) {
+            // We found a class. Let's load it.
+
+            name = name.replace("/", ".").replace(".class", "");
+            Class clazz = Class.forName(name);
+            classes.add(clazz);
+        }
     }
-        
+    
     }
     catch (Exception e) {
         System.out.println(e.toString());
@@ -64,11 +84,13 @@ private static Class[] getClasses(String package_name) {
 private static Token newToken(Class clazz, String s) {
     try {
         Constructor ctor = clazz.getDeclaredConstructor(String.class);
-        return ((Token)ctor.newInstance(s));
+        return ((Token)ctor.newInstance(new Object[]{ s }));
     } catch (Exception e) {
         // Don't worry about this, it won't ever happen in my elite c0de.
         System.out.println(e.toString());
+        System.out.println(e.getStackTrace()[0].toString());
     }
+
     
     return (null);
 }

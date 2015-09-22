@@ -67,6 +67,7 @@ public void run() throws IOException {
         }
         catch (Exception e) {
             System.out.println(e.toString());
+            System.out.println(e.getStackTrace()[0].toString());
             
             if (config.output != System.out)
                 config.output.println(e.toString());                
