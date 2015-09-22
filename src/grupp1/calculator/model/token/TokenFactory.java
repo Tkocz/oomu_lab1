@@ -4,7 +4,6 @@ import grupp1.calculator.model.token.operators.unary.*;
 import java.io.FileInputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
