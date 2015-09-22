@@ -85,9 +85,6 @@ public Token getToken(String s) {
 
     Class[] classes;
     
-    // A sane person would cache all of this crap below... but hey, who cares
-    // about performance!
-    
     // Binary operators.
     classes = getClasses("grupp1.calculator.model.token.operators.binary");
     for (Class clazz : classes) {
