@@ -28,8 +28,9 @@ private static final Map<String, Class> op_token_cache = new HashMap<>();
  * @return Array of classes.
  */
 private static Class[] getClasses(String package_name) {
-    List<Class> classes      = new ArrayList<>();
-    String      package_url  = package_name.replace(".", "/");
+    package_name = package_name.replace(".", "/");
+    
+    List<Class> classes = new ArrayList<>();
     
     // Basically, what we do is load all classes in the specified package...
     
@@ -51,7 +52,7 @@ private static Class[] getClasses(String package_name) {
     JarEntry je;
     while ((je = jar.getNextJarEntry()) != null) {
         String name = je.getName();
-        if (name.startsWith(package_url) && name.endsWith(".class")) {
+        if (name.startsWith(package_name) && name.endsWith(".class")) {
             // We found a class. Let's load it.
 
             name = name.replace("/", ".").replace(".class", "");
