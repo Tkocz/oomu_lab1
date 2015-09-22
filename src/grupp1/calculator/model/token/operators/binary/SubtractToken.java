@@ -22,7 +22,7 @@ public SubtractToken(String op) {
  * Evaluates the specified token sequence to produce an arithmetic result.
  * @param seq The sequence to evaluate.
  * @return The result of evaluating the sequence.
- * @author Philip Arvidsson (S133686)
+ * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
