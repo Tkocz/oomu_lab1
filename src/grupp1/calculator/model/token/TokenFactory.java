@@ -20,7 +20,7 @@ public class TokenFactory {
 /**
  * Cache for faster look-up.
  */
-private static Map<String, Class> op_token_cache = new HashMap<String, Class>();
+private static Map<String, Class> op_token_cache = new HashMap<>();
     
 /**
  * Extremely l33t uber hax for retrieving all classes in a package.
