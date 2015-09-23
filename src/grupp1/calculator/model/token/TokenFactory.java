@@ -42,7 +42,7 @@ private static Class[] getClasses(String package_name) {
     }
     catch (Exception e) {
         // Might as well try...
-        jar_name = "oomj-lab.jar";
+        jar_name = "oomj-lab1.jar";
     }
     
     try (FileInputStream fis = new FileInputStream(jar_name);
