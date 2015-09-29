@@ -93,12 +93,12 @@ private double evaluateExpr(String s) throws Exception {
         if (tok == null)
             throw new InvalidTokenException(str);
         
-        seq.push(tok);
+        stack.push(tok);
     }
     
-    double r = seq.pop().eval(seq);
+    double r = stack.pop().eval(stack);
         
-    if (!seq.isEmpty())
+    if (!stack.isEmpty())
         throw new InvalidOperationException();
     
     return (r);

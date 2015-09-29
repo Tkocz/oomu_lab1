@@ -22,15 +22,15 @@ public MultiplyToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
+public double eval(Stack<Token> stack) throws Exception {
     // Multiplication is commutative so order doesn't matter.
-    return (seq.pop().eval(seq) * seq.pop().eval(seq));
+    return (stack.pop().eval(stack) * stack.pop().eval(stack));
 }
 
 }

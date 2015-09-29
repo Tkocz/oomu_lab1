@@ -30,12 +30,12 @@ public class OperandToken extends Token{
     
     /**
      * Evaluates the specified token sequence to produce an arithmetic result.
-     * @param seq The sequence to evaluate.
+     * @param stack The sequence to evaluate.
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
      */
     @Override
-    public double eval(Stack<Token> seq) {
+    public double eval(Stack<Token> stack) {
         return (value);
     }
 

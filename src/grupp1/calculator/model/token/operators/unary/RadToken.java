@@ -22,14 +22,14 @@ public RadToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Philip Arvidsson (S133686)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
-    return (seq.pop().eval(seq) * Math.PI / 180.0f);
+public double eval(Stack<Token> stack) throws Exception {
+    return (stack.pop().eval(stack) * Math.PI / 180.0f);
 }
 
 }

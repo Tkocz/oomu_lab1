@@ -23,15 +23,15 @@ public DivideToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
-    double divisor  = seq.pop().eval(seq);
-    double dividend = seq.pop().eval(seq);
+public double eval(Stack<Token> stack) throws Exception {
+    double divisor  = stack.pop().eval(stack);
+    double dividend = stack.pop().eval(stack);
     
     // Might as well use an epsilon value here since equality testing for floats
     // and doubles is unsafe anyway.

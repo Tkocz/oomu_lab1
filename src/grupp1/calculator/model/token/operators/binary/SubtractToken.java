@@ -22,18 +22,18 @@ public SubtractToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
+public double eval(Stack<Token> stack) throws Exception {
     // There's no commutativity here so care must be take with regards to
     // order of operands.
 
-    double b = seq.pop().eval(seq);
-    double a = seq.pop().eval(seq);
+    double b = stack.pop().eval(stack);
+    double a = stack.pop().eval(stack);
 
     return (a - b);
 }

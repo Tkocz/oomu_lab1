@@ -22,14 +22,14 @@ public AcosToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Philip Arvidsson (S133686)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
-    return (Math.acos(seq.pop().eval(seq)));
+public double eval(Stack<Token> stack) throws Exception {
+    return (Math.acos(stack.pop().eval(stack)));
 }
 
 }

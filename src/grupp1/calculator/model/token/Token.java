@@ -41,12 +41,12 @@ public abstract class Token {
     
     /**
      * Evaluates the specified token sequence to produce an arithmetic result.
-     * @param seq The sequence to evaluate.
+     * @param stack The sequence to evaluate.
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
      * @throws java.lang.Exception Evaluation exception.
      */
-    public abstract double eval(Stack<Token> seq)
+    public abstract double eval(Stack<Token> stack)
             // We have to add this to allow exceptions in subclasses.
             throws Exception;
  

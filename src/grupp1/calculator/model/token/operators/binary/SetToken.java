@@ -24,19 +24,19 @@ public SetToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param seq The sequence to evaluate.
+ * @param stack The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Philip Arvidsson (S133686)
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> seq) throws Exception {
-    Token token = seq.pop();
+public double eval(Stack<Token> stack) throws Exception {
+    Token token = stack.pop();
     
     if (!(token instanceof VarToken))
         throw new InvalidOperationException();
     
-    double val = seq.pop().eval(seq);
+    double val = stack.pop().eval(stack);
     
     VarToken.setVar(token.GetString(), val);
     
