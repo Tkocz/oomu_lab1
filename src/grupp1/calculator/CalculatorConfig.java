@@ -16,7 +16,7 @@ testa på att använda "java.util.Properties" istället.
 KOMMENTAR:
 
     Accepterar kritiken då den är relevant för labbens infallsvinkel, men det
-    finns ingen poäng alls med inkappsling av en POD-typ som bara ska bära
+    finns ingen poäng alls med inkapsling av en POD-typ som bara ska bära
     data. Ändrar.
 
     // Philip
