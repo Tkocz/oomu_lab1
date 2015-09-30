@@ -20,7 +20,8 @@ public DivisionByZeroException(String expression)
 }
 
 Detta är allt ni behöver i eran klass och innebär att meddelendet kan hämtas via
-samma publika interface som alla andra Exception-klasser, dvs genom getMessage() metoden.
+samma publika interface som alla andra Exception-klasser, dvs genom getMessage()
+metoden.
 
 KOMMENTAR:
 
