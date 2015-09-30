@@ -35,27 +35,28 @@ public Controller(CalculatorConfig config) {
  * @throws java.io.IOException In the event of Input/Output madness
  */
 public void run() throws IOException {
-    // Auto-closeables.
-    try (InputStreamReader isr = new InputStreamReader(config.input);
-         BufferedReader    br  = new BufferedReader   (isr)      )
-    {
+    IOHelper io; // @To-do: Make a class for this crap.
 
     while (true) {
-        String s = br.readLine();
+        String s = io.readLine();
 
         if (s == null || s.equals(""))
             break; // ...and we're done!
 
         try {
             double result = evaluateExpression(s);
+
+            io.writeLine(result);
         }
         catch (Exception e) {
-            System.out.println(e.toString());
-            System.out.println(e.getStackTrace()[0].toString());
+            String msg = e.toString() + " @ " + e.getStackTrace()[0].toString();
+            System.out.println(msg);
+
+            io.writeLine(msg);
         }
     }
 
-    } // -
+    // -
 }
 
 /**
