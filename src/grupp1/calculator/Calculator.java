@@ -7,7 +7,7 @@ import grupp1.calculator.controller.Controller;
  * @author Philip Arvidsson (S133686)
  */
 public class Calculator {
-    
+
 /**
  * @private
  * The program authors.
@@ -32,7 +32,7 @@ private static void printIntroMsg() {
 /**
  * Program main method. Do not call this method - it is done automatically
  * by the Java VM.
- * 
+ *
  * @param args the command line arguments
  * @author Martin Bergqvist (S141564)
  * @throws java.lang.Exception if output-file cannot be created
@@ -42,19 +42,19 @@ public static void main(String[] args) throws Exception {
         System.out.println("Syntax: java Calculator [källfil destinationsfil]");
         System.exit(0);
     }
-    
+
     CalculatorConfig config = new CalculatorConfig();
-    
+
     if(args.length == 0)
         printIntroMsg();
 
     if(args.length == 2){
-        config.input = new java.io.FileInputStream(args[0]);
-        config.output = new java.io.PrintStream(new java.io.FileOutputStream(args[1]));
+        config.setInput(new java.io.FileInputStream(args[0]));
+        config.setOutput(new java.io.PrintStream(new java.io.FileOutputStream(args[1])));
     }
 
     try {
-        new Controller(config).run();   
+        new Controller(config).run();
     }
     catch (Exception e) {
         System.out.println("The calculator has crashed fatally.");
@@ -62,7 +62,7 @@ public static void main(String[] args) throws Exception {
         System.out.println("");
         System.out.println(e.toString());
         System.out.println("Stack trace:");
-        
+
         for (StackTraceElement ste : e.getStackTrace())
             System.out.println("in " + ste.toString());
     }

@@ -56,33 +56,33 @@ public class TokenFactory {
  * Cache for faster look-up.
  */
 private static final Map<String, Class> op_token_cache = new HashMap<>();
-    
+
 /**
  * Extremely l33t uber hax for retrieving all classes in a package.
  * @return Array of classes.
  */
 private static Class[] getClasses(String package_name) {
     package_name = package_name.replace(".", "/");
-    
+
     List<Class> classes = new ArrayList<>();
-    
+
     // Basically, what we do is load all classes in the specified package...
-    
+
     String jar_name;
-    
+
     try {
         jar_name = TokenFactory.class.getProtectionDomain()
-                              .getCodeSource().getLocation().toURI().getPath();    
+                              .getCodeSource().getLocation().toURI().getPath();
     }
     catch (Exception e) {
         // Might as well try...
         jar_name = "oomj-lab1.jar";
     }
-    
+
     try (FileInputStream fis = new FileInputStream(jar_name);
          JarInputStream  jar = new JarInputStream(fis))
     {
-        
+
     JarEntry je;
     while ((je = jar.getNextJarEntry()) != null) {
         String name = je.getName();
@@ -94,13 +94,13 @@ private static Class[] getClasses(String package_name) {
             classes.add(clazz);
         }
     }
-    
+
     }
     catch (Exception e) {
         System.out.println(e.toString());
         System.out.println(e.getStackTrace()[0].toString());
     }
-    
+
     // Lousy hacky method because Java can't do type inference correctly.
     return (classes.toArray(new Class[0]));
 }
@@ -120,10 +120,10 @@ private static Token newToken(Class clazz, String s) {
         System.out.println(e.toString());
         System.out.println(e.getStackTrace()[0].toString());
     }
-    
+
     return (null);
 }
-    
+
 /**
  * Creates a token from the specified string. Returns null if a token could
  * not be created.
@@ -133,7 +133,7 @@ private static Token newToken(Class clazz, String s) {
 public Token getToken(String s) {
     if (op_token_cache.containsKey(s))
         return newToken(op_token_cache.get(s), s);
-    
+
     // Variables.
     if (s.charAt(0) == '$')
         return new VarToken(s);
@@ -142,17 +142,17 @@ public Token getToken(String s) {
     Token tok = getTokenInternal(s, "operators.binary");
     if (tok != null)
         return (tok);
-    
+
     // Unary operators.
     tok = getTokenInternal(s, "operators.unary");
     if (tok != null)
         return (tok);
-    
+
     // Constants.
     tok = getTokenInternal(s, "operators.constants");
     if (tok != null)
         return (tok);
-   
+
     // Numbers.
     try                             { Double.parseDouble(s); }
     catch (NumberFormatException e) { return null;           }
@@ -168,7 +168,7 @@ public Token getToken(String s) {
  */
 private Token getTokenInternal(String s, String package_name) {
     package_name = "grupp1.calculator.model.token." + package_name;
-    
+
     Class[] classes = getClasses(package_name);
     for (Class clazz : classes) {
         Annotation a = clazz.getAnnotation(OperatorInfo.class);
@@ -177,7 +177,7 @@ private Token getTokenInternal(String s, String package_name) {
             return newToken(clazz, s);
         }
     }
-    
+
     return (null);
 }
 

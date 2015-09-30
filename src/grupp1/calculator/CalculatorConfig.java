@@ -59,13 +59,16 @@ private TokenFactory token_factory = new TokenFactory();
 public String getPrompt()             { return (prompt); }
 public void   setPrompt(String value) { prompt = value;  }
 
-public void        setInput(InputStream value) { input = value;  }
 public InputStream getInput()                  { return (input); }
+public void        setInput(InputStream value) { input = value;  }
 
-public void        setOutput(PrintStream value) { output = value;  }
 public PrintStream getOutput()                  { return (output); }
+public void        setOutput(PrintStream value) { output = value;  }
 
-public void setPrecision(int value) { precision = value;  }
 public int  getPrecision()          { return (precision); }
+public void setPrecision(int value) { precision = value;  }
+
+public TokenFactory getTokenFactory()                   { return (token_factory); }
+public void         setTokenFactory(TokenFactory value) { token_factory = value;  }
 
 }

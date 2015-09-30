@@ -3,7 +3,6 @@ package grupp1.calculator.controller;
 import grupp1.calculator.CalculatorConfig;
 import grupp1.calculator.model.token.*;
 import grupp1.calculator.exceptions.*;
-import grupp1.calculator.view.ResultPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,41 +35,23 @@ public Controller(CalculatorConfig config) {
  * @throws java.io.IOException In the event of Input/Output madness
  */
 public void run() throws IOException {
-    // Optimally, this should be passed in to this class so that the output
-    // format can be modified more easily.
-    ResultPrinter result_printer = new ResultPrinter(config.output,
-                                                     config.precision);
-    
     // Auto-closeables.
     try (InputStreamReader isr = new InputStreamReader(config.input);
          BufferedReader    br  = new BufferedReader   (isr)      )
     {
 
     while (true) {
-        // The prompt is only useful for System.out, really.
-        if ((config.output == System.out) && (config.prompt != null))
-            config.output.print(config.prompt);
-
         String s = br.readLine();
-        
+
         if (s == null || s.equals(""))
             break; // ...and we're done!
-        
-        // When not using System.out, we might want to output the
-        // expressions as well.
-        if (config.output != System.out)
-            config.output.println(s);
-        
+
         try {
-            double r = evaluateExpr(s);
-            result_printer.printResult(r);
+            double result = evaluateExpression(s);
         }
         catch (Exception e) {
             System.out.println(e.toString());
             System.out.println(e.getStackTrace()[0].toString());
-            
-            if (config.output != System.out)
-                config.output.println(e.toString());                
         }
     }
 
@@ -84,25 +65,39 @@ public void run() throws IOException {
  * @throws InvalidTokenException An invalid token was encountered.
  * @throws DivisionByZeroException An attempt to divide by zero was encountered.
  */
-private double evaluateExpr(String s) throws Exception {
-    Stack<Token> seq = new Stack<>();
+private double evaluateExpression(String s) throws Exception {
+    /*
+    En annan "best practice" är att använda meningsfulla, fullständiga (ej
+    förkortningar) namn på variabler, metoder, mm.
+
+    KOMMENTAR:
+
+        Njaha. Konsensus måste väl ändå vara att koden ska gå att förstå.
+        Namnet evaluateExpr() är uppenbart för alla som har programmerat över
+        huvud taget. Men ok, jag förstår vad du syftar på, så jag ändrar. Jag
+        har i övrigt ganska svårt för Javas "super verbose" stil.
+
+        // Philip
+    */
+
+    Stack<Token> stack = new Stack<>();
 
     for (String str : s.split(" ")) {
-        Token tok = config.token_factory.getToken(str);
-        
+        Token tok = config.getTokenFactory().getToken(str);
+
         if (tok == null)
             throw new InvalidTokenException(str);
-        
+
         stack.push(tok);
     }
-    
+
     double r = stack.pop().eval(stack);
-        
+
     if (!stack.isEmpty())
-        throw new InvalidOperationException();
-    
+        throw new InvalidOperationException("Stack was not evaluated properly.");
+
     return (r);
-        
+
 }
 
 }
