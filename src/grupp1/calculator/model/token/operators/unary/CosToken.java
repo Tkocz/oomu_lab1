@@ -2,7 +2,6 @@ package grupp1.calculator.model.token.operators.unary;
 
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
-import grupp1.calculator.model.token.Token;
 import grupp1.calculator.model.expression.Expression;
 
 /**

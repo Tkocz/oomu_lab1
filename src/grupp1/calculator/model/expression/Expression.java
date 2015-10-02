@@ -5,7 +5,7 @@ import grupp1.calculator.model.token.Token;
 
 /**
  * Interface Expression
- * Signatures for addToken, getNextToken, isEmptyExpression & clearExpression
+ * Signatures for addToken, getNextToken, isEmptyExpression and clearExpression
  * @author Martin Bergqvist (S141564)
  */
 public interface Expression {

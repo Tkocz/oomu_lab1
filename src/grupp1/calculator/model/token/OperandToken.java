@@ -30,7 +30,7 @@ public class OperandToken extends Token{
     
     /**
      * Evaluates the specified token sequence to produce an arithmetic result.
-     * @param expression
+     * @param expression The sequence to evaluate.
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
      */
