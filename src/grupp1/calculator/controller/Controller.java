@@ -1,13 +1,14 @@
 package grupp1.calculator.controller;
 
 import grupp1.calculator.CalculatorConfig;
+import grupp1.calculator.model.RPNCalculator;
+import grupp1.calculator.model.expression.*;
 import grupp1.calculator.model.token.Token;
 import grupp1.calculator.exceptions.*;
 import grupp1.calculator.view.IOHelper;
 
 import java.io.IOException;
 
-import java.util.Stack;
 
 /**
  * This class ties together the model and view packages to create a functioning
@@ -34,6 +35,7 @@ public Controller(CalculatorConfig config) {
  * @throws java.io.IOException In the event of Input/Output madness
  */
 public void run() throws IOException {
+    RPNCalculator calc = new RPNCalculator(config.getExpression(), config.getTokenFactory());
     String fmt = "%." + Integer.toString(config.getPrecision()) + "f";
 
     IOHelper io = config.getIO();
@@ -44,15 +46,14 @@ public void run() throws IOException {
             break; // ...and we're done!
 
         try {
-            double result = evaluateExpression(s);
+            double result = calc.evaluateExpression(s);
 
             io.writeLine(String.format(fmt, result));
         }
         catch (Exception e) {
             String msg = e.toString() + " @ " + e.getStackTrace()[0].toString();
-            System.out.println(msg);
 
-            io.writeLine(msg);
+            io.writeLine("[ERROR] " + msg);
         }
     }
 
