@@ -54,6 +54,31 @@ public SetToken(String op) {
 public double evaluate(Expression expression) throws Exception {
     Token token = expression.getNextToken();
 
+    /**
+     * Ni vill undvika att använda "instanceof" i eran kod, om möjligt (ni
+     * använder detta i SetToken). Detta är oftast en tecken på att den
+     * objektorienterade designen behöver ses över.
+     *
+     * KOMMENTAR:
+     *   Nja, nu är du ute och cyklar. ;-) Variabler kan användas på två vis:
+     *   Antingen läser man ut en variabels värde, eller så skriver man ett
+     *   värde till en variabel. När vi bara har en variabel-token ($x) så läser
+     *   vi ut variabelns värde. Ex: 4 $x + som ju i annan notation är x+4. När
+     *   vi däremot vill skriva till en variabel så använder vi följande
+     *   uttryck: 4 $x = (eller x=4 i mer reguljär form). När vi är i denna
+     *   metod (SetToken.evaluate()) så vet vi alltå att en variabel ska till-
+     *   delas. Däremot inte vilken! Därför måste vi läsa ut namnet på den
+     *   (vilket ju är nästkommande token!). Det kan vi göra genom att anropa
+     *   getNextToken(). MEN! Vi måste försäkra oss om att den token vi får
+     *   tillbaka är en VarToken. Något annat vore ett syntaxfel (ex. skulle
+     *   uttryck som 4 0 = tillåtas, dvs till dela värdet noll värdet fyra.)
+     *   För att omöjliggöra det använder vi instanceof. INGEN annan lösning
+     *   finns med arkiktektur vi byggt vår kalkylator kring. Om du ändå anser
+     *   att vi har fel uttamanar jag dig att presentera en alternativ lösning!
+     *
+     *   // Philip  :-)
+     */
+
     if (!(token instanceof VarToken))
         throw new InvalidOperationException("Expected variable name.");
 
