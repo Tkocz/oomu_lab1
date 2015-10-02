@@ -3,7 +3,7 @@ package grupp1.calculator.model.token.operators.unary;
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for performing conversions from degrees to radians.
@@ -28,8 +28,8 @@ public RadToken(String op) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
-    return (stack.pop().eval(stack) * Math.PI / 180.0f);
+public double evaluate(Expression expression) throws Exception {
+    return (expression.getNextToken().evaluate(expression) * Math.PI / 180.0f);
 }
 
 }

@@ -1,6 +1,6 @@
 package grupp1.calculator.model.token;
 
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Contains the Subclass OperandToken, 
@@ -30,12 +30,12 @@ public class OperandToken extends Token{
     
     /**
      * Evaluates the specified token sequence to produce an arithmetic result.
-     * @param stack The sequence to evaluate.
+     * @param expression
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
      */
     @Override
-    public double eval(Stack<Token> stack) {
+    public double evaluate(Expression expression){
         return (value);
     }
 

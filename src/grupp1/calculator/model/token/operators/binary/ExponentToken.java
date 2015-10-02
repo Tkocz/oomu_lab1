@@ -3,7 +3,7 @@ package grupp1.calculator.model.token.operators.binary;
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for performing exponentiation.
@@ -28,9 +28,9 @@ public ExponentToken(String op) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
-    double exponent = stack.pop().eval(stack);
-    double base     = stack.pop().eval(stack);
+public double evaluate(Expression expression) throws Exception {
+    double exponent = expression.getNextToken().evaluate(expression);
+    double base     = expression.getNextToken().evaluate(expression);
 
     return (Math.pow(base, exponent));
 }

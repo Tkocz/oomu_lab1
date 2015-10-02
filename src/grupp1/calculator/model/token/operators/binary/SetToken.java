@@ -26,7 +26,7 @@ import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import grupp1.calculator.model.token.operators.unary.VarToken;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;;
 
 /**
  * Provides a token for setting variable values.
@@ -51,13 +51,13 @@ public SetToken(String op) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
-    Token token = stack.pop();
+public double evaluate(Expression expression) throws Exception {
+    Token token = expression.getNextToken();
 
     if (!(token instanceof VarToken))
         throw new InvalidOperationException("Expected variable name.");
 
-    double val = stack.pop().eval(stack);
+    double val = expression.getNextToken().evaluate(expression);
 
     VarToken.setVar(token.GetString(), val);
 

@@ -4,10 +4,10 @@ import grupp1.calculator.CalculatorConfig;
 import grupp1.calculator.model.token.Token;
 import grupp1.calculator.exceptions.*;
 import grupp1.calculator.view.IOHelper;
+import grupp1.calculator.model.expression.*;
 
 import java.io.IOException;
 
-import java.util.Stack;
 
 /**
  * This class ties together the model and view packages to create a functioning
@@ -35,7 +35,7 @@ public Controller(CalculatorConfig config) {
  */
 public void run() throws IOException {
     String fmt = "%." + Integer.toString(config.getPrecision()) + "f";
-
+    
     IOHelper io = config.getIO();
     while (true) {
         String s = io.readLine();
@@ -81,20 +81,20 @@ private double evaluateExpression(String s) throws Exception {
         // Philip
     */
 
-    Stack<Token> stack = new Stack<>();
 
+    Expression expression = new ExpressionStack();
     for (String str : s.split(" ")) {
-        Token tok = config.getTokenFactory().getToken(str);
+        Token token = config.getTokenFactory().getToken(str);
 
-        if (tok == null)
+        if (token == null)
             throw new InvalidTokenException(str);
-
-        stack.push(tok);
+        
+        expression.addToken(token);
     }
 
-    double r = stack.pop().eval(stack);
+    double r = expression.getNextToken().evaluate(expression);
 
-    if (!stack.isEmpty())
+    if (!expression.isEmptyExpression())
         throw new InvalidOperationException("Stack was not evaluated properly.");
 
     return (r);

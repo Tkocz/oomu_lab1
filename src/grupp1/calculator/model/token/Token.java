@@ -1,6 +1,6 @@
 package grupp1.calculator.model.token;
 
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Contains the superclass Token, as well as 
@@ -41,12 +41,12 @@ public abstract class Token {
     
     /**
      * Evaluates the specified token sequence to produce an arithmetic result.
-     * @param stack The sequence to evaluate.
+     * @param expression
      * @return The result of evaluating the sequence.
      * @author Philip Arvidsson (S133686)
      * @throws java.lang.Exception Evaluation exception.
      */
-    public abstract double eval(Stack<Token> stack)
+    public abstract double evaluate(Expression expression)
             // We have to add this to allow exceptions in subclasses.
             throws Exception;
  

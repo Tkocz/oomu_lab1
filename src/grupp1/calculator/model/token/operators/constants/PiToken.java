@@ -3,7 +3,7 @@ package grupp1.calculator.model.token.operators.constants;
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for retrieve the value of pi. Easier to treat this as a
@@ -29,7 +29,7 @@ public PiToken(String name) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
+public double evaluate(Expression expression) throws Exception {
     return (Math.PI);
 }
 

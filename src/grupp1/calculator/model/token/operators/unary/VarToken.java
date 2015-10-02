@@ -5,7 +5,7 @@ import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for loading variable values.
@@ -43,7 +43,7 @@ public static void setVar(String name, double val) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
+public double evaluate(Expression expression) throws Exception {
     String var = this.GetString();
     
     if (!vars.containsKey(var))

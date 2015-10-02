@@ -3,7 +3,7 @@ package grupp1.calculator.model.token.operators.binary;
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for performing subtraction.
@@ -28,12 +28,12 @@ public SubtractToken(String op) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
+public double evaluate(Expression expression) throws Exception {
     // There's no commutativity here so care must be take with regards to
     // order of operands.
 
-    double b = stack.pop().eval(stack);
-    double a = stack.pop().eval(stack);
+    double b = expression.getNextToken().evaluate(expression);
+    double a = expression.getNextToken().evaluate(expression);
 
     return (a - b);
 }

@@ -4,7 +4,7 @@ import grupp1.calculator.exceptions.DivisionByZeroException;
 import grupp1.calculator.model.token.OperatorInfo;
 import grupp1.calculator.model.token.OperatorToken;
 import grupp1.calculator.model.token.Token;
-import java.util.Stack;
+import grupp1.calculator.model.expression.Expression;
 
 /**
  * Provides a token for performing division.
@@ -29,9 +29,9 @@ public DivideToken(String op) {
  * @throws java.lang.Exception Evaluation exception.
  */
 @Override
-public double eval(Stack<Token> stack) throws Exception {
-    double divisor  = stack.pop().eval(stack);
-    double dividend = stack.pop().eval(stack);
+public double evaluate(Expression expression) throws Exception {
+    double divisor  = expression.getNextToken().evaluate(expression);
+    double dividend = expression.getNextToken().evaluate(expression);
     
     // Might as well use an epsilon value here since equality testing for floats
     // and doubles is unsafe anyway.
