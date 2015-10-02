@@ -95,7 +95,7 @@ private double evaluateExpression(String s) throws Exception {
     double r = expression.getNextToken().evaluate(expression);
 
     if (!expression.isEmptyExpression())
-        throw new InvalidOperationException("Stack was not evaluated properly.");
+        throw new InvalidOperationException("Expression was not evaluated properly.");
 
     return (r);
 

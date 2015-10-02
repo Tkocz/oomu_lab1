@@ -22,7 +22,7 @@ public AtanToken(String op) {
 
 /**
  * Evaluates the specified token sequence to produce an arithmetic result.
- * @param stack The sequence to evaluate.
+ * @param expression The sequence to evaluate.
  * @return The result of evaluating the sequence.
  * @author Philip Arvidsson (S133686)
  * @throws java.lang.Exception Evaluation exception.
