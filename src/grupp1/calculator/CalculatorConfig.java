@@ -1,5 +1,7 @@
 package grupp1.calculator;
 
+import grupp1.calculator.model.expression.Expression;
+import grupp1.calculator.model.expression.ExpressionStack;
 import grupp1.calculator.model.token.TokenFactory;
 import grupp1.calculator.model.token.ReflectingTokenFactory;
 import grupp1.calculator.view.IOHelper;
@@ -29,6 +31,14 @@ KOMMENTAR:
  */
 public class CalculatorConfig {
 
+/**
+ * Expression container object.
+ */
+private Expression expression;
+
+/**
+ * I/O-helper object for easier IO.
+ */
 private IOHelper io;
 
 /**
@@ -42,6 +52,37 @@ private int precision;
  */
 private TokenFactory token_factory;
 
+/**
+ * Gets the expression container object.
+ * @return The expression container object.
+ */
+public Expression getExpression() {
+    return (expression);
+}
+
+/**
+ * Sets the expression container object.
+ * @param value The expression cntainer object.
+ */
+public void setExpression(Expression value) {
+    expression = value;
+}
+
+/**
+ * Gets the output stream.
+ * @return The output stream.
+ */
+public IOHelper getIO() {
+    return (io);
+}
+
+/**
+ * Sets the output stream.
+ * @param value The output stream.
+ */
+public void setIO(IOHelper value) {
+    io = value;
+}
 /**
  * Gets the precision
  * @return The precision, in number of decimals.
@@ -74,25 +115,10 @@ public void setTokenFactory(TokenFactory value) {
     token_factory = value;
 }
 
-/**
- * Gets the output stream.
- * @return The output stream.
- */
-public IOHelper getIO() {
-    return (io);
-}
-
-/**
- * Sets the output stream.
- * @param value The output stream.
- */
-public void setIO(IOHelper value) {
-    io = value;
-}
-
 public static CalculatorConfig defaultConfig() {
     CalculatorConfig conf = new CalculatorConfig();
 
+    conf.setExpression(new ExpressionStack());
     conf.setIO(new StdIO());
     conf.setPrecision(4);
     conf.setTokenFactory(new ReflectingTokenFactory());
