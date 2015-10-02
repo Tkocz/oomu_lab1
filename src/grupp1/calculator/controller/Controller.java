@@ -3,6 +3,7 @@ package grupp1.calculator.controller;
 import grupp1.calculator.CalculatorConfig;
 import grupp1.calculator.model.token.*;
 import grupp1.calculator.exceptions.*;
+import grupp1.calculator.view.IOHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,8 +36,9 @@ public Controller(CalculatorConfig config) {
  * @throws java.io.IOException In the event of Input/Output madness
  */
 public void run() throws IOException {
-    IOHelper io; // @To-do: Make a class for this crap.
+    String fmt = "%." + Integer.toString(config.getPrecision()) + "f";
 
+    IOHelper io = config.getIO();
     while (true) {
         String s = io.readLine();
 
@@ -46,7 +48,7 @@ public void run() throws IOException {
         try {
             double result = evaluateExpression(s);
 
-            io.writeLine(result);
+            io.writeLine(String.format(fmt, result));
         }
         catch (Exception e) {
             String msg = e.toString() + " @ " + e.getStackTrace()[0].toString();

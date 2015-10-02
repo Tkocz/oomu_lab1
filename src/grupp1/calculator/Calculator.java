@@ -1,6 +1,10 @@
 package grupp1.calculator;
 
 import grupp1.calculator.controller.Controller;
+import grupp1.calculator.view.StreamIO;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 /**
  * Program main class.
@@ -43,14 +47,16 @@ public static void main(String[] args) throws Exception {
         System.exit(0);
     }
 
-    CalculatorConfig config = new CalculatorConfig();
+    CalculatorConfig config = CalculatorConfig.defaultConfig();
 
     if(args.length == 0)
         printIntroMsg();
 
     if(args.length == 2){
-        config.setInput(new java.io.FileInputStream(args[0]));
-        config.setOutput(new java.io.PrintStream(new java.io.FileOutputStream(args[1])));
+        config.setIO(new StreamIO(
+                         new FileInputStream (args[0]),
+                         new FileOutputStream(args[1])
+                     ));
     }
 
     try {

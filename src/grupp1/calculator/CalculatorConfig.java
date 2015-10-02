@@ -1,8 +1,9 @@
 package grupp1.calculator;
 
 import grupp1.calculator.model.token.TokenFactory;
-import java.io.InputStream;
-import java.io.PrintStream;
+import grupp1.calculator.model.token.ReflectingTokenFactory;
+import grupp1.calculator.view.IOHelper;
+import grupp1.calculator.view.StdIO;
 
 /*
 ----------------------------------
@@ -28,47 +29,75 @@ KOMMENTAR:
  */
 public class CalculatorConfig {
 
-/**
- * The prompt string to display, or null to not display any prompt.
- */
-private String prompt = "> ";
-
-/**
- * The input stream where expressions are to be read from by the calculator. The
- * default is System.in.
- */
-private InputStream input = System.in;
-
-/**
- * The output stream where results are to be written to by the calculator. The
- * default is System.out.
- */
-private PrintStream output = System.out;
+private IOHelper io;
 
 /**
  * The precision, in number of decimals, to display in results. The default
  * value is 4.
  */
-private int precision = 4;
+private int precision;
 
 /**
  * The token factory to use for acquiring tokens (operators, etc.).
  */
-private TokenFactory token_factory = new TokenFactory();
+private TokenFactory token_factory;
 
-public String getPrompt()             { return (prompt); }
-public void   setPrompt(String value) { prompt = value;  }
+/**
+ * Gets the precision
+ * @return The precision, in number of decimals.
+ */
+public int  getPrecision() {
+    return (precision);
+}
 
-public InputStream getInput()                  { return (input); }
-public void        setInput(InputStream value) { input = value;  }
+/**
+ * Sets the precision.
+ * @param value The precision, in number of decimals.
+ */
+public void setPrecision(int value) {
+    precision = value;
+}
 
-public PrintStream getOutput()                  { return (output); }
-public void        setOutput(PrintStream value) { output = value;  }
+/**
+ * Gets the token factory.
+ * @return The token factory.
+ */
+public TokenFactory getTokenFactory() {
+    return (token_factory);
+}
 
-public int  getPrecision()          { return (precision); }
-public void setPrecision(int value) { precision = value;  }
+/**
+ * Sets the token factory.
+ * @param value The token factory.
+ */
+public void setTokenFactory(TokenFactory value) {
+    token_factory = value;
+}
 
-public TokenFactory getTokenFactory()                   { return (token_factory); }
-public void         setTokenFactory(TokenFactory value) { token_factory = value;  }
+/**
+ * Gets the output stream.
+ * @return The output stream.
+ */
+public IOHelper getIO() {
+    return (io);
+}
+
+/**
+ * Sets the output stream.
+ * @param value The output stream.
+ */
+public void setIO(IOHelper value) {
+    io = value;
+}
+
+public static CalculatorConfig defaultConfig() {
+    CalculatorConfig conf = new CalculatorConfig();
+
+    conf.setIO(new StdIO());
+    conf.setPrecision(4);
+    conf.setTokenFactory(new ReflectingTokenFactory());
+
+    return (conf);
+}
 
 }
