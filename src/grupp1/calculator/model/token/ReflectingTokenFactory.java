@@ -36,6 +36,7 @@ KOMMENTAR:
 
 import grupp1.calculator.model.token.TokenFactory;
 import grupp1.calculator.model.token.operators.unary.*;
+
 import java.io.FileInputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;

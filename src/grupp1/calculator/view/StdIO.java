@@ -2,6 +2,11 @@ package grupp1.calculator.view;
 
 import java.util.Scanner;
 
+/**
+ * Provides an implementation of IOHelper that uses stdin/stdout for input and
+ * output.
+ * @author Philip Arvidsson (S133686)
+ */
 public class StdIO implements IOHelper {
 
 /**
@@ -9,6 +14,9 @@ public class StdIO implements IOHelper {
  */
 private String prompt = "> ";
 
+/**
+ * The scanner used to read from System.in in a simple manner.
+*/
 private final Scanner scanner = new Scanner(System.in);
 
 /**
@@ -27,13 +35,21 @@ public void setPrompt(String value) {
     prompt = value;
 }
 
-public void writeLine(String s) {
-    System.out.println(s);
-}
-
+/**
+ * Reads a line from the input.
+ * @return The line of text read from the input, or null.
+ */
 public String readLine() {
     System.out.print(prompt);
     return scanner.nextLine();
+}
+
+/**
+ * Writes a line of text to the output.
+ * @param s The line of text to write.
+ */
+public void writeLine(String s) {
+    System.out.println(s);
 }
 
 }

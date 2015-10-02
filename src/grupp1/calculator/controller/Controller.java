@@ -1,13 +1,11 @@
 package grupp1.calculator.controller;
 
 import grupp1.calculator.CalculatorConfig;
-import grupp1.calculator.model.token.*;
+import grupp1.calculator.model.token.Token;
 import grupp1.calculator.exceptions.*;
 import grupp1.calculator.view.IOHelper;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import java.util.Stack;
 
