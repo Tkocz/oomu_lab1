@@ -2,6 +2,7 @@ package grupp1.calculator.model;
 
 import grupp1.calculator.exceptions.InvalidTokenException;
 import grupp1.calculator.exceptions.InvalidOperationException;
+import grupp1.calculator.exceptions.DivisionByZeroException;
 import grupp1.calculator.model.expression.Expression;
 import grupp1.calculator.model.token.Token;
 import grupp1.calculator.model.token.TokenFactory;
