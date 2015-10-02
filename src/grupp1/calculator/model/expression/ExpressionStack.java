@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grupp1.calculator.model.expression;
 
 import grupp1.calculator.model.token.Token;
 import java.util.Stack;
 
 /**
- *
- * @author Martin
+ * Containing overrides for implementation of Stack-interface
+ * @author Martin Bergqvist (S141564)
  */
 public class ExpressionStack implements Expression{
     Stack<Token> stack = new Stack<>();
