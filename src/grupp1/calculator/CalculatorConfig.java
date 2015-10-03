@@ -115,6 +115,13 @@ public void setTokenFactory(TokenFactory value) {
     token_factory = value;
 }
 
+/**
+ * Retrieves a default configuration for the calculator. This default precision
+ * has a precision of four decimals, enables all of the calculators
+ * functionality (variables, etc.) and reads and writes to the standard
+ * input/output
+ * @return The default calculator configuration.
+ */
 public static CalculatorConfig defaultConfig() {
     CalculatorConfig conf = new CalculatorConfig();
 
