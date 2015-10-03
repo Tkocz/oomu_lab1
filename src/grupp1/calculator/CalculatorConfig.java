@@ -120,7 +120,7 @@ public void setTokenFactory(TokenFactory value) {
  * has a precision of four decimals, enables all of the calculators
  * functionality (variables, etc.) and reads and writes to the standard
  * input/output
- * @return The default calculator configuration.
+ * @return The default calculator configuration.z
  */
 public static CalculatorConfig defaultConfig() {
     CalculatorConfig conf = new CalculatorConfig();
